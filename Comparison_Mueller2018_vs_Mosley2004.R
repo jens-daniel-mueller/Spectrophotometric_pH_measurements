@@ -56,7 +56,7 @@ pHT.Mueller <- function(Sal, Tem, Rspec){
 #### calculate pHT values incl. deviations according to Mosley and Mueller 
 
 df <- data.table(expand.grid(
-  Sal = seq(0,40,0.1),
+  Sal = seq(0,40,1),
   Tem = 298.15,
   RSpec = seq(0.2,1.5,0.1)
 ))
@@ -72,14 +72,25 @@ df <- df %>%
 #### plot results and write data file
 
 df %>% 
-ggplot(aes(Sal, RSpec, fill=dpHT))+
-  geom_raster()+
+ggplot(aes(Sal, RSpec, fill=dpHT, col="grey50"))+
+  geom_raster(interpolate = TRUE)+
   scale_fill_gradient2(low = "blue", high = "red", mid="white", name=expression(Delta~pHT))+
-  labs(x="Salinity", y="R ratio")
+  labs(x="Salinity", y="R ratio")+
+  scale_x_continuous(expand = c(0,0), breaks = seq(0,40,5))+
+  scale_y_continuous(expand = c(0,0), breaks = seq(0,5,0.1))+
+  theme_test()
+ggsave("dpH_Mueller_Mosley_Hovmoeller.jpg")
 
 df %>% 
-  #filter(RSpec == 0.8) %>% 
   ggplot(aes(Sal, dpHT, col=as.factor(RSpec))) +
   geom_line()+
   scale_color_viridis_d(name="R ratio")+
-  labs(x="Salinity", name=expression(Delta~pHT))
+  labs(x="Salinity", name=expression(Delta~pHT))+
+  theme_bw()
+ggsave("dpH_Mueller_Mosley_linegraph.jpg")
+
+
+
+
+
+
