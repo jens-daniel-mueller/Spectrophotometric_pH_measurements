@@ -19,7 +19,7 @@
 # 278.15 K < T < 308.15 K
 # 
 # When using this code, please cite:
-# Müller J. D., Rehder G., 2018,
+# M?ller J. D., Rehder G., 2018,
 # Metrology of pH Measurements in Brackish Waters - Part 2:
 # Experimental Characterization of Purified meta-Cresol Purple
 # for Spectrophotometric pHT Measurements,
@@ -27,7 +27,7 @@
 # 
 ###############################################################################
 
-# Definition of pK2e2 according to Eq. 9 and Table 1 in Müller and Rehder (2018)
+# Definition of pK2e2 according to Eq. 9 and Table 1 in M?ller and Rehder (2018)
   
   pK2e2 <- function(S, T, Rspec){
     1.08071477e+03                  -
@@ -60,7 +60,7 @@ pK2e2(20, 298.15)
 
 # Definition of absorptivity ratios e1 and e2/e3
 # as originally published by Liu et al. (2011)
-# and applied by Müller and Rehder (2018).
+# and applied by M?ller and Rehder (2018).
   
   e1 <- function(T) {
     -0.007762 + 4.5174e-5*T
@@ -86,7 +86,7 @@ pK2e2(20, 298.15)
 # Testing the pHTspec function with S = 20, T = 298.15, and Rspec = 1
 # should give the control value 7.7142
   
-  pHT(20, 298.15, 1)
+  pHTspec(20, 298.15, 1)
   
   
 ###############################################################################

@@ -56,7 +56,7 @@ pHT.Mueller <- function(Sal, Tem, Rspec){
 #### calculate pHT values incl. deviations according to Mosley and Mueller 
 
 df <- data.table(expand.grid(
-  Sal = seq(0,40,1),
+  Sal = seq(0,40,0.1),
   Tem = 298.15,
   RSpec = seq(0.2,1.5,0.1)
 ))
@@ -89,6 +89,8 @@ df %>%
   theme_bw()
 ggsave("dpH_Mueller_Mosley_linegraph.jpg")
 
+
+write.csv(df, "dpH_Mueller_Mosley.csv", row.names = FALSE)
 
 
 
